@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
+#include <vector>
+#include <iostream>
+#include <string>
 
 uint32_t getValue(const std::vector<std::pair<std::string, uint32_t>>& gates, uint32_t init_value, int bit_pos) {
     for (int i = 0; i < gates.size(); ++i) {
