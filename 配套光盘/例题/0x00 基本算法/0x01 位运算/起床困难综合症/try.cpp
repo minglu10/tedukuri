@@ -19,7 +19,7 @@ uint32_t getValue(const std::vector<std::pair<std::string, uint32_t>>& gates, ui
 uint32_t getMaxHurt(const std::vector<std::pair<std::string, uint32_t>>& gates, int limit) {
     int cur_val = 0;
     uint32_t ans = 0;
-    for (int bit_pos = 29; bit_pos >= 0; --bit_pos) {
+    for (int bit_pos = 30; bit_pos >= 0; --bit_pos) {
         int v0 = getValue(gates, 0, bit_pos);
         if ((v0 == 1) ||((cur_val + (1 << bit_pos)) > limit)) {
             ans += (v0 << bit_pos);
