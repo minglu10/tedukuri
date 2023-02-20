@@ -29,6 +29,9 @@ void pd(int p) {
 				if (++k >= ans) return;
 			}
 	if (aa[5] == 31) ans = k;
+	if (ans == 2) {
+		std::cout << "p is " << p << std::endl;
+	}
 }
 
 void abc() {

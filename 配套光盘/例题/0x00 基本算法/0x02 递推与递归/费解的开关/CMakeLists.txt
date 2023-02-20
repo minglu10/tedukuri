@@ -1,0 +1,12 @@
+cmake_minimum_required (VERSION 3.0)
+project ("CMakeTest")
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_BUILD_TYPE Debug)
+#find_package("OpenCV" 4.0.0 REQUIRED )
+#message("OpenCV version: ${OpenCV_VERSION}")
+#include_directories(${OpenCV_INCLUDE_DIRS})
+#link_directories(${OpenCV_LIB_DIRS})
+add_executable(try try.cpp)
+#target_link_libraries(multhread pthread)
+target_link_libraries(try pthread)
