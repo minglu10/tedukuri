@@ -14,7 +14,7 @@ int hamilton(const std::vector<std::vector<int>> & paths) {
             if ((i >> j) & 1) {
                 int new_inx = i ^ (1 << j);
                 for (int k = 0; k < n; ++k) {
-                    if (new_inx >> k) {
+                    if (new_inx >> k & 1) {
                         if (ans[new_inx][k] != std::numeric_limits<int>::max()) {
                             ans[i][j] = std::min(ans[i][j], ans[new_inx][k] + paths[k][j]);
                         }
