@@ -36,7 +36,7 @@ XY getCoordinates(uint64_t N, uint64_t A) {
 void solve(uint64_t N, uint64_t A, uint64_t B) {
     XY axy = getCoordinates(N, A);
     XY bxy = getCoordinates(N, B);
-    printf("%0.f\n", (double)10*std::sqrt((axy._x - bxy._x) * (axy._x - bxy._x) +  (axy._y - bxy._y) * (axy._y - bxy._y)));
+    printf("%.0f\n", (double)10*std::sqrt((axy._x - bxy._x) * (axy._x - bxy._x) +  (axy._y - bxy._y) * (axy._y - bxy._y)));
 
 }
 int main() {
