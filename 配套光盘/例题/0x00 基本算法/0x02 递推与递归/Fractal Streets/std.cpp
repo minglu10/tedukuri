@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
+#include <iostream>
 using namespace std;
 
 pair<long long, long long> calc(int n, long long m) {
@@ -19,7 +20,8 @@ pair<long long, long long> calc(int n, long long m) {
 int main () {
     int data; for (scanf("%d", &data); data; --data) {
         int n; long long h, o;
-        scanf("%d %I64d %I64d", &n, &h, &o);
+        //scanf("%d %I64d %I64d", &n, &h, &o);
+        scanf("%d %llu %llu", &n, &h, &o);
         pair<long long, long long> hp = calc(n, h - 1);
         pair<long long, long long> op = calc(n, o - 1);
         long long dx = hp.first - op.first, dy = hp.second - op.second;
