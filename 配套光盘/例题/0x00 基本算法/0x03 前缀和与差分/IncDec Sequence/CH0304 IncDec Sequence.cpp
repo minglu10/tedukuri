@@ -11,7 +11,7 @@ int main() {
 	int n;
 	cin >> n;
 	for (int i = 1; i <= n; i++) scanf("%lld", &a[i]);
-	b[1] = a[1];
+	//b[1] = a[1];
 	for (int i = 2; i <= n; i++) b[i] = a[i] - a[i-1];
 	ll p = 0, q = 0;
 	for (int i = 2; i <= n; i++)
