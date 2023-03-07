@@ -28,6 +28,7 @@ int main() {
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= m; j++)
 			if (spf[j].c && spf[j].s >= cow[i].l && spf[j].s <= cow[i].r) {
+				std::cout << cow[i].l << " " << cow[i].r << " " << spf[j].s << std::endl;
 				ans++;
 				spf[j].c--;
 				break;
