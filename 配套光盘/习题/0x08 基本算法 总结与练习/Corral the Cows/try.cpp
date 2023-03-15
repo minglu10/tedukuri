@@ -29,12 +29,12 @@ bool isValid(int len, int C) {
     if (ity->first > origin_y_start) --ity;
     for (int i = itx->second; i < new_to_original_xs.size(); ++i) {
         int origin_x_end = new_to_original_xs[i];
-        int origin_x_start = origin_x_end + 1 - len;
+        int origin_x_start = std::max(0, origin_x_end + 1 - len);
         auto itxx = original_to_new_xs.lower_bound(origin_x_start);
         int new_x_start = itxx->second;
         for (int j = ity->second; j < new_to_original_ys.size(); ++j) {
             int origin_y_end = new_to_original_ys[j];
-            int origin_y_start = origin_y_end + 1 - len;
+            int origin_y_start = std::max(origin_y_end + 1 - len, 0);
             auto ityy = original_to_new_ys.lower_bound(origin_y_start);
             int new_y_start = ityy->second;
             auto sum = sum_new_xys[i][j];
