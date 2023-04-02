@@ -3,31 +3,9 @@
 #include <queue>
 #include <sstream>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
-std::vector<int64_t> Merge(std::vector<int64_t>& v1, std::vector<int64_t>& v2) {
-    std::unordered_map<int, std::set<int>> used;
-    std::priority_queue<std::vector<int64_t>> queue;
-    std::vector<int64_t> v3;
-    queue.push(std::vector<int64_t>{-v1[0]-v2[0], 0, 0});
-    used[0].insert(0);
-    while(v3.size() < v1.size()) {
-        const auto& t = queue.top();
-        int i = t[1];
-        int j = t[2];
-        v3.push_back(-t[0]);
-        queue.pop();
-        if (used[i + 1].count(j) == 0) {
-            used[i + 1].insert(j);
-            queue.push(std::vector<int64_t>{-v1[i +1] - v2[j], i + 1, j});
-        }
-        if (used[i].count(j + 1) == 0) {
-            used[i].insert(j + 1);
-            queue.push(std::vector<int64_t>{-v1[i] - v2[j + 1], i, j + 1});
-        }
-    }
-    return v3;
-}
 
 void Solve() {
     int m, n;
@@ -40,19 +18,44 @@ void Solve() {
         }
         std::sort(vs.begin(), vs.end());
         values.emplace_back(std::move(vs));
-        if (values.size() > 1) {
-            auto v = Merge(values[0], values[1]);
-            values.clear();
-            values.emplace_back(std::move(v));
+    }
+    std::priority_queue<std::pair<int64_t, std::vector<int>>> queue;
+    std::set<std::vector<int>> used;
+    int64_t sum = 0;
+    for (int i = 0; i < m; ++i) {
+        sum += values[i][0];
+    }
+    std::vector<int>index(m, 0);
+    queue.emplace(std::make_pair(-sum, index));
+    used.insert(index);
+    std::vector<int64_t> ans_values;
+    while(ans_values.size() < n) {
+        auto & t = queue.top();
+        ans_values.push_back(-t.first);
+        index = std::move(t.second);
+        queue.pop();
+        for (int i = 0; i < m ; ++i) {
+            auto index1 = index;
+            index1[i] += 1;
+            if (used.count(index1) == 0) {
+                sum = 0;
+                for (int j = 0; j < m; ++j) {
+                    sum += values[j][index1[j]];
+                }
+                queue.emplace(std::make_pair(-sum, index1));
+                used.insert(index1);
+            }
         }
+        
     }
     std::stringstream ss;
     for (int i = 0; i < n; ++i) {
-        ss << values[0][i] << " ";
+        ss << ans_values[i] << " ";
     }
     std::string s = ss.str();
     s.pop_back();
     std::cout << s << std::endl;
+
 }
 
 int main() {
