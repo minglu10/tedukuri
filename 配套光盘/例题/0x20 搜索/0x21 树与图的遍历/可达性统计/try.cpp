@@ -18,10 +18,11 @@ int FindConnections(const std::unordered_map<int, std::unordered_set<int>>& pare
                  FindConnections(parent_children, child_parent, n_connections, i, bitsets);
                  bitsets[k] |= bitsets[i];
             }
-            ans = 0;
-            for(int i = 1; i <bitsets[k].size(); ++i) {
-                ans += bitsets[k].test(i);
-            }
+            //ans = 0;
+            //for(int i = 1; i <bitsets[k].size(); ++i) {
+            //    ans += bitsets[k].test(i);
+            //}
+            ans = bitsets[k].count();
         }
         n_connections[k] = ans;
         return ans;
