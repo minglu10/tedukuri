@@ -39,6 +39,7 @@ bool bfs2(P p1, P p2) {
 		}
 		for (int i = 0; i < 4; i++) {
 			nxt = now;
+			//int d[4][2]= {{-1,0},{1,0},{0,-1},{0,1}};
 			nxt.x = now.x + d[i][0];
 			nxt.y = now.y + d[i][1];
 			if (!pd(nxt.x, nxt.y)) continue;
@@ -89,6 +90,7 @@ string bfs1() {
 		}
 		for (int i = 0; i < 4; i++) {
 			nxt = now;
+			//int d[4][2]= {{-1,0},{1,0},{0,-1},{0,1}};
 			nxt.x = now.x + d[i][0];
 			nxt.y = now.y + d[i][1];
 			if (!pd(nxt.x, nxt.y)) continue;
