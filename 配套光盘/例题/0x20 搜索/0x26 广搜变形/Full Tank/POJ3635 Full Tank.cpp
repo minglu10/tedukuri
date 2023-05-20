@@ -5,6 +5,7 @@
 #include <cstring>
 #include <iostream>
 #include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 const int N = 1006, C = 106;
 int n, m, p[N], d[N][C];
@@ -24,12 +25,15 @@ void Full_Tank() {
 	while (q.size()) {
 		int city = q.top().second.first;
 		int fuel = q.top().second.second;
+		int cur_cost = q.top().first;
 		q.pop();
 		if (city == ed) {
 			cout << d[city][fuel] << endl;
 			return;
 		}
+		
 		if (v[city][fuel]) continue;
+		assert(-cur_cost == d[city][fuel]);
 		v[city][fuel] = 1;
 		if (fuel < c && d[city][fuel+1] > d[city][fuel] + p[city]) {
 			d[city][fuel+1] = d[city][fuel] + p[city];
